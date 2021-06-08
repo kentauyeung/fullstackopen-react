@@ -1,31 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+const Display = ({ counter }) => {
+  return (
+    <div>{counter}</div>
+  )
+}
 
+const Button = (props) => {
+  return (
+    <button onClick={props.handleClick}>
+      {props.text}
+    </button>
+  )
+}
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercise = 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercise = 7
-      },
-      {
-        name: 'Start of a component',
-        exercise = 14
-      }
-    ]
-  }
+  const [ counter, setCounter ] = useState(0)
+
+  const increaseByOne = () => setCounter(counter+1)
+  const decreaseByOne = () => setCounter(counter-1)
+  const setToZero = () => setCounter(0)
 
   return (
     <div>
-     <Header course = {course} />
-     <Content course = {parts} />
-     <Total parts = {parts} />
+      <Display counter={counter}/>
+      <Button
+        handleClick={increaseByOne}
+        text='plus'
+      />
+      <Button 
+        handleClick={decreaseByOne}
+        text='minus'
+      />
+      <Button 
+        handleClick={setToZero}
+        text='reset'
+      />
     </div>
   )
 }
