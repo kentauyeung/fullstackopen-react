@@ -1,37 +1,49 @@
 import React, { useState } from 'react'
 
-const Display = ({ counter }) => <div>{counter}</div>
+// const History = (props) => {
+//   if (props.allClicks.length === 0) {
+//     return (
+//       <div>
+//         the app is used by pressing the buttons
+//       </div>
+//     )
+//   }
+//   return (
+//     <div>
+//       button press history: {props.allClicks.join(' ')}
+//     </div>
+//   )
+// }
 
-const Button = ({ handleClick, text }) => (
-    <button onClick={handleClick}>
-      {text}
-    </button>
-  )
+// const Display = props => <div>{props.value}</div>
+
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
 
 const App = () => {
-  const [ counter, setCounter ] = useState(0)
+  const [good, setGood] = useState(0)
+  const [bad, setBad] = useState(0)
+  const [neutral, setNeutral] = useState(0)
 
-  const increaseByOne = () => setCounter(counter+1)
-  const decreaseByOne = () => setCounter(counter-1)
-  const setToZero = () => setCounter(0)
 
   return (
     <div>
-      <Display counter={counter}/>
-      <Button
-        handleClick={increaseByOne}
-        text='plus'
-      />
-      <Button 
-        handleClick={decreaseByOne}
-        text='minus'
-      />
-      <Button 
-        handleClick={setToZero}
-        text='reset'
-      />
+      <h3>Give Feedback</h3>
+      <Button handleClick={() => setGood + 1} text="good" />
+      <Button handleClick={() => bad + 1} text="bad" />
+      <Button handleClick={() => setNeutral + 1} text="neutral" />
+      <h3>Stats</h3>
+      <div>Good {good.value}</div>
+      <div>Bad {bad.value}</div>
+      <div>Neutral {neutral.value}</div>
     </div>
   )
 }
 
 export default App
+
+// https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps
+// exercises
