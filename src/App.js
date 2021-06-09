@@ -32,18 +32,15 @@ const App = () => {
   return (
     <div>
       <h3>Give Feedback</h3>
-      <Button handleClick={() => setGood + 1} text="good" />
-      <Button handleClick={() => bad + 1} text="bad" />
-      <Button handleClick={() => setNeutral + 1} text="neutral" />
+      <Button handleClick={() => setGood(good + 1)} text="good" />
+      <Button handleClick={() => setBad(bad + 1)} text="bad" />
+      <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
       <h3>Stats</h3>
-      <div>Good {good.value}</div>
-      <div>Bad {bad.value}</div>
-      <div>Neutral {neutral.value}</div>
+      <div>Good {good}</div>
+      <div>Bad {bad}</div>
+      <div>Neutral {neutral}</div>
     </div>
   )
 }
 
 export default App
-
-// https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps
-// exercises
